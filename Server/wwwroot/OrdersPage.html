@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Заказы</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="js/order.js"></script>
+</head>
+
+<body>
+    <div>
+        <div style="width:100%">
+            <div id="Blocks" style="float:left;">
+                <div id="editBlock">
+                    <table>
+                        <th>Редактирование заказа</th>
+                        <tr><td><input type="hidden" id="editId" /></td><td></td></tr>
+                        <tr><td><label>Имя пользователя: </label></td><td><input type="text" id="editName" required /></td></tr>
+                        <tr><td><label>Id товара: </label></td><td><input type="text" id="editProductId" required /></td></tr>
+                        <tr><td><label>Количество товара: </label></td><td><input type="text" id="editCount" required /></td></tr>
+                    </table>
+                    <button id="editOrder"> Изменить</button>
+                </div>
+
+                <div id="createBlock">
+                    <table>
+                        <th>Добавление нового заказа</th>
+                        <tr><td><label>Имя пользователя: </label></td><td><input type="text" id="addName" required /></td><td><span id="ValidName" style="color:red;"></span></td></tr>
+                        <tr><td><label>Id товара: </label></td><td><input type="text" id="addProductId" required /></td><td><span id="ValidProductId" style="color:red;"></span></td></tr>
+                        <tr><td><label>Количество товара: </label></td><td><input type="text" id="addCount" required /></td><td><span id="ValidCount" style="color:red;"></span></td></tr>
+                    </table>
+                    <button id="addOrder">Добавить</button>
+                </div>
+
+                <div id="findBlock">
+                    <table>
+                        <th>Найти все заказы по имени</th>
+                        <tr><td><label>Имя пользователя: </label></td><td><input type="text" id="findName" required /></td></tr>
+                    </table>
+                    <button id="FindOrder">Найти заказы по имени</button>
+                </div>
+            </div>
+
+            <div id="productList" style="float:right;"></div> 
+        </div>
+
+        <div id="errors" style="color:red; float: left"></div>
+    </div>
+
+    <div id="Bar">
+        <div id="tableBlock"></div>
+
+        <div id="buttons">
+            <table>
+                <tr><td><button onclick="document.location='index.html'">Переход на продукты</button></td></tr>
+                <tr><td><button id="update">Обновить все данные</button></td></tr>
+                <tr><td><button id="clear">Удалить сообщения об ошибках</button></td></tr>
+                <tr><td><button id="find">Найти по имени</button></td></tr>
+                <tr><td><button id="add" style="display:none">Добавить запрос</button></td></tr>
+            </table>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            GetAllOrders();
+
+            $("#editOrder").click(function (event) {
+                event.preventDefault();
+                EditOrder();
+            });
+
+            $("#addOrder").click(function (event) {
+                event.preventDefault();
+                AddOrder();
+            });
+
+            $("#FindOrder").click(function (event) {
+                event.preventDefault();
+                GetOrders($("#findName").val());
+            });
+
+            $("#update").click(function (event) {
+                event.preventDefault();
+                $("#createBlock").css('display', 'block');
+                $("#editBlock").css('display', 'none');
+                $("#findBlock").css('display', 'none');
+                $("#find").css('display', 'block');
+                $("#add").css('display', 'none');
+                ClearAll();
+                GetAllOrders();
+            });
+
+            $("#clear").click(function (event) {
+                event.preventDefault();
+                ClearAll();
+            });
+
+            $("#find").click(function (event) {
+                event.preventDefault();
+                $("#createBlock").css('display', 'none');
+                $("#editBlock").css('display', 'none');
+                $("#findBlock").css('display', 'block');
+                $("#find").css('display', 'none');
+                $("#add").css('display', 'block');
+                ClearAll();
+            });
+
+            $("#add").click(function (event) {
+                event.preventDefault();
+                $("#createBlock").css('display', 'block');
+                $("#editBlock").css('display', 'none');
+                $("#findBlock").css('display', 'none');
+                $("#find").css('display', 'block');
+                $("#add").css('display', 'none');
+                ClearAll();
+                GetAllOrders();
+            });
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿div {
+    display: inline-block;
+    margin: 20px;
+}
+
+#errors {
+    float: left;
+}
+
+#Bar {
+    float: right;
+    width: 100%;
+}
+
+body {
+    /*background: #000 url(https://media.discordapp.net/attachments/509801663419383808/718584723424673902/m9hIVJFIFlM.png?width=876&height=657);*/ /* Фоновый цвет и фоновый рисунок*/
+    color: #fff; /*Цвет текста на странице*/
+    /*background-attachment: fixed;*/ /* Фон страницы фиксируется */
+    /*background-repeat: round;*/ /* Изображение повторяется по горизонтали */
+    /*background-size: 120%;*/
+}
+
+#Blocks {
+    float : left;
+    width: auto;
+}
+
+
+#buttons {
+    display: inline-block;  
+    color: #fff;  
+    padding: 1rem 1.5rem;  
+    text-decoration: none;  
+    border-radius: 3px;  
+    margin-top: 4px;
+    float: right;
+}
+
+#tableBlock {
+    width: 60%;
+    border: 1px solid #333; 
+    border-spacing: 7px 5px;
+    width: auto;
+}
+
+table{
+    background-color: skyblue;
+}
+
+td {
+    border: 1px solid #333; 
+    padding: 5px;
+    background-color: white;
+}
+
+#editBlock {
+    display: none;
+    float: left;
+}
+
+#createBlock {
+    float: left;
+}
+
+#findBlock {
+    display: none;
+    float: left;
+}
+

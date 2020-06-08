@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Старт (продукты)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="js/product.js"></script>
+</head>
+<body>
+    <div style="width: 100%">
+        <div id="Blocks" style="width:100%; float:left;">
+            <div id="editBlock" style="width:100%; float:left;">
+                <table>
+                    <th>Редактирование продукта</th>
+                    <tr><td><input type="hidden" id="editId" /></td><td></td></tr>
+                    <tr><td><label>Название: </label></td><td><input type="text" id="editTitle" required /></td></trstyle="background-color:>
+                    <tr><td><label>Цена: </label></td><td><input type="text" id="editPrice" required /></td></tr>
+                </table>
+                <button id="editProduct"> Изменить</button>
+            </div>
+
+            <div id="createBlock" style="width:100%; float:left;">
+                <table>
+                    <th>Добавление продукта</th>
+                    <tr><td><label>Название: </label></td><td><input type="text" id="addTitle" required /></td><td><span id="ValidName" style="color:red;"></span></td></trstyle="background-color:>
+                    <tr><td><label>Цена: </label></td><td><input type="text" id="addPrice" required /></td><td><span id="ValidPrice" style="color:red;"></span></td></tr>
+                </table>
+                <button id="addProduct">Добавить</button>
+            </div>
+            
+        </div>
+
+        <div id="errors" style="color:red; float: left"></div>
+    </div>
+
+    <div id="Bar">
+        <div id="tableBlock"></div>
+
+        <div id="buttons">
+            <table>
+                <tr><td><button onclick="document.location='OrdersPage.html'">Переход к заказам</button></td></tr>
+                <tr><td><button id="update">Обновить данные</button></td></tr>
+                <tr><td><button id="clear">Удалить сообщения об ошибках</button></td></tr>
+            </table>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            GetAllProducts();
+
+            $("#editProduct").click(function (event) {
+                event.preventDefault();
+                EditProduct();
+            });
+
+            $("#addProduct").click(function (event) {
+                event.preventDefault();
+                ClearAll();
+                AddProduct();
+            });
+
+            $("#update").click(function (event) {
+                event.preventDefault();
+                GetAllProducts();
+            })
+
+            $("#clear").click(function () {
+                ClearAll();
+            })
+
+        })
+    </script>
+</body>
+</html>
